@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(pageTitle)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${pageTitle}">Election Solution</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<header th:fragment="header" class="site-header">
+    <a th:href="@{/}" class="brand">Election Solution</a>
+</header>
+<footer th:fragment="footer" class="site-footer">
+    <p>&copy; <span th:text="${#temporals.year(#temporals.createNow())}">2026</span> Election Solution</p>
+</footer>
+</body>
+</html>
