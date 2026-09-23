@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head(${title})}"></head>
+<body>
+<header th:replace="~{layout :: header}"></header>
+
+<main class="container">
+    <h1 th:text="${title}">Election Solution</h1>
+    <p th:text="${message}">Welcome message</p>
+</main>
+
+<footer th:replace="~{layout :: footer}"></footer>
+</body>
+</html>
