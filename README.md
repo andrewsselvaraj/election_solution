@@ -17,7 +17,7 @@ Then open http://localhost:8080.
 ## LangChain sample (LangChain4j + OpenAI)
 
 `/assistant` is a chat page backed by a [LangChain4j](https://docs.langchain4j.dev) AI service.
-The model can call tools in `ElectionTools` (candidates, constituencies, polling schedule)
+The model can call tools in `ElectionTools` (candidates, constituencies, polling schedule, polling booth)
 to answer questions such as "Who is standing in the North constituency?".
 
 ```bash

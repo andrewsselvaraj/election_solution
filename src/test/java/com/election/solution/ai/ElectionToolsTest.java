@@ -19,4 +19,17 @@ class ElectionToolsTest {
     void listsDistinctConstituencies() {
         assertThat(tools.constituencies()).containsExactly("North", "South");
     }
+
+    @Test
+    void returnsPollingBoothForConstituencyIgnoringCase() {
+        assertThat(tools.pollingBooth(" South "))
+                .isEqualTo("Community Hall, 45 Temple Street, South Ward");
+    }
+
+    @Test
+    void explainsWhenConstituencyHasNoBooth() {
+        assertThat(tools.pollingBooth("East"))
+                .contains("No polling booth found for 'East'")
+                .contains("North", "South");
+    }
 }

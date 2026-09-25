@@ -12,7 +12,7 @@
     </p>
 
     <form th:if="${enabled}" th:action="@{/assistant}" method="post" class="ask-form">
-        <label for="question">Ask about candidates, constituencies or polling day</label>
+        <label for="question">Ask about candidates, constituencies, polling day or where to vote</label>
         <textarea id="question" name="question" rows="3" required
                   th:text="${question}">Who is standing in the North constituency?</textarea>
         <button type="submit">Ask</button>
