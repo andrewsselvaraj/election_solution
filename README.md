@@ -32,11 +32,13 @@ Model and token limit are set in `application.properties` (`langchain.openai.*`,
 
 | Profile | File | Used for |
 |---|---|---|
-| `dev` (default) | `application-dev.properties` | Local runs; logs OpenAI requests/responses and tool calls |
+| _none_ (local) | `application.properties` only | `./mvnw spring-boot:run` with no profile |
+| `dev` | `application-dev.properties` | Logs OpenAI requests/responses and tool calls |
 | `prod` | `application-prod.properties` | Deployment; template cache on, no prompt logging, `PORT`/`OPENAI_MODEL` from env |
 | `test` | `application-test.properties` | Automated tests (`@ActiveProfiles("test")`); API key forced empty so OpenAI is never called |
 
-`application.properties` holds the shared settings. Pick a profile with
+`application.properties` holds the shared settings and is the only file loaded when no
+profile is given. Pick a profile with
 `SPRING_PROFILES_ACTIVE=prod` or `./mvnw spring-boot:run -Dspring-boot.run.profiles=prod`.
 
 The OpenAI key is **never** stored in these files — every profile reads it from the
