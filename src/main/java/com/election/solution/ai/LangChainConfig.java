@@ -20,11 +20,14 @@ public class LangChainConfig {
     @Bean
     ChatModel chatModel(@Value("${langchain.openai.api-key}") String apiKey,
                         @Value("${langchain.openai.model-name}") String modelName,
-                        @Value("${langchain.openai.max-completion-tokens}") int maxCompletionTokens) {
+                        @Value("${langchain.openai.max-completion-tokens}") int maxCompletionTokens,
+                        @Value("${langchain.openai.log-requests:false}") boolean logRequests) {
         return OpenAiChatModel.builder()
                 .apiKey(apiKey)
                 .modelName(modelName)
                 .maxCompletionTokens(maxCompletionTokens)
+                .logRequests(logRequests)
+                .logResponses(logRequests)
                 .build();
     }
 
