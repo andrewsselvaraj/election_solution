@@ -21,3 +21,11 @@ target/
 
 ### OS ###
 .DS_Store
+
+### Local secrets (never commit API keys) ###
+# Spring Boot auto-loads these from the working directory and they override
+# src/main/resources/application.properties
+/config/
+/application.properties
+application-local.properties
+.env

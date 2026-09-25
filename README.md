@@ -42,7 +42,13 @@ profile is given. Pick a profile with
 `SPRING_PROFILES_ACTIVE=prod` or `./mvnw spring-boot:run -Dspring-boot.run.profiles=prod`.
 
 The OpenAI key is **never** stored in these files — every profile reads it from the
-`OPENAI_API_KEY` environment variable.
+`OPENAI_API_KEY` environment variable. Alternatively, put it in `config/application.properties`
+at the project root (git-ignored; Spring Boot loads it automatically and it overrides the
+committed file):
+
+```properties
+langchain.openai.api-key=sk-...
+```
 
 ## Test
 
