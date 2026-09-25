@@ -7,6 +7,7 @@
 <main class="container">
     <h1 th:text="${title}">Election Solution</h1>
     <p th:text="${message}">Welcome message</p>
+    <p><a th:href="@{/assistant}">Ask the LangChain election assistant</a></p>
 </main>
 
 <footer th:replace="~{layout :: footer}"></footer>

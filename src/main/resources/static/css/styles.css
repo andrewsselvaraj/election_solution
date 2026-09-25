@@ -36,3 +36,9 @@ body {
     color: #616e7c;
     font-size: 0.875rem;
 }
+
+.ask-form { display: flex; flex-direction: column; gap: 0.5rem; max-width: 640px; }
+.ask-form textarea { font: inherit; padding: 0.5rem; }
+.ask-form button { align-self: flex-start; padding: 0.5rem 1.25rem; background: #1f3a5f; color: #fff; border: 0; border-radius: 4px; cursor: pointer; }
+.notice { background: #fff4e5; border-left: 4px solid #f0a020; padding: 0.75rem 1rem; }
+.answer { margin-top: 1.5rem; background: #fff; padding: 1rem; border-radius: 4px; white-space: pre-wrap; }

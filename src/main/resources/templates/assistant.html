@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head(${title})}"></head>
+<body>
+<header th:replace="~{layout :: header}"></header>
+
+<main class="container">
+    <h1 th:text="${title}">Election Assistant</h1>
+
+    <p th:unless="${enabled}" class="notice">
+        The assistant is disabled. Set the <code>ANTHROPIC_API_KEY</code> environment variable and restart.
+    </p>
+
+    <form th:if="${enabled}" th:action="@{/assistant}" method="post" class="ask-form">
+        <label for="question">Ask about candidates, constituencies or polling day</label>
+        <textarea id="question" name="question" rows="3" required
+                  th:text="${question}">Who is standing in the North constituency?</textarea>
+        <button type="submit">Ask</button>
+    </form>
+
+    <section th:if="${answer}" class="answer">
+        <h2>Answer</h2>
+        <p th:text="${answer}">Answer text</p>
+    </section>
+</main>
+
+<footer th:replace="~{layout :: footer}"></footer>
+</body>
+</html>
