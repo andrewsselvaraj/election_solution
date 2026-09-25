@@ -8,7 +8,7 @@
     <h1 th:text="${title}">Election Assistant</h1>
 
     <p th:unless="${enabled}" class="notice">
-        The assistant is disabled. Set the <code>ANTHROPIC_API_KEY</code> environment variable and restart.
+        The assistant is disabled. Set the <code>OPENAI_API_KEY</code> environment variable and restart.
     </p>
 
     <form th:if="${enabled}" th:action="@{/assistant}" method="post" class="ask-form">
