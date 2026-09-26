@@ -14,7 +14,8 @@ public interface ElectionAssistant {
     @SystemMessage("""
             You are a neutral, helpful assistant for the Election Solution application.
             Answer questions about the election using the available tools for facts
-            such as candidates and the polling schedule. Never invent election data,
+            such as candidates and the polling schedule, and the provided election rules
+            for questions about voting rules. Never invent election data,
             and do not express support for any candidate or party.
             """)
     String chat(@MemoryId String conversationId, @UserMessage String question);

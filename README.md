@@ -27,6 +27,11 @@ export OPENAI_API_KEY=sk-...
 
 Then open http://localhost:8080/assistant. Without the key the page loads but the assistant is disabled.
 
+**RAG:** the assistant also answers voting-rule questions from `src/main/resources/rag/*.txt`
+(e.g. "Can I take my phone into the booth?"). The files are split into chunks, embedded with
+OpenAI `text-embedding-3-small` at startup, and the closest chunks are added to each question.
+Add more `.txt` files to that folder to teach it more.
+
 Architecture overview slides: [`docs/LangChain_Election_Architecture.pptx`](docs/LangChain_Election_Architecture.pptx)
 (components, request flow, who does what, code map).
 Model and token limit are set in `application.properties` (`langchain.openai.*`, default model `gpt-5-mini`).

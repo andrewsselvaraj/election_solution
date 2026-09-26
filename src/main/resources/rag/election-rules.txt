@@ -1,0 +1,25 @@
+Election Solution - Voter Rules (sample document for the RAG demo)
+
+Voter eligibility
+A person may vote if they are a citizen, at least 18 years old on polling day,
+and registered on the electoral roll of their constituency.
+
+Documents to bring
+Voters must show one photo identity document at the booth: the voter ID card,
+a passport, or a driving licence. Photocopies are not accepted.
+
+Mobile phones
+Mobile phones, cameras and other recording devices are not allowed inside the
+voting compartment. Phones must be switched off and left with the booth staff.
+
+Voters with disabilities
+Voters with disabilities may bring one companion aged 18 or over to help them
+vote. Ramps and wheelchairs are available at every polling booth.
+
+Queue at closing time
+Anyone who is standing in the queue at 18:00 when the booth closes will still
+be allowed to vote.
+
+Postal voting
+Voters on election duty and voters aged 85 or over may apply for a postal
+ballot at least 10 days before polling day.
