@@ -36,7 +36,8 @@ public class LangChainConfig {
         return AiServices.builder(ElectionAssistant.class)
                 .chatModel(chatModel)
                 .tools(tools)
-                .chatMemory(MessageWindowChatMemory.withMaxMessages(20))
+                // one memory per conversation id, keeping the last 20 messages
+                .chatMemoryProvider(id -> MessageWindowChatMemory.withMaxMessages(20))
                 .build();
     }
 }
