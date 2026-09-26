@@ -71,4 +71,12 @@ public class LangChainConfig {
                 .chatMemoryProvider(id -> MessageWindowChatMemory.withMaxMessages(20))
                 .build();
     }
+
+    @Bean
+    ResumeAssistant resumeAssistant(ChatModel chatModel) {
+        return AiServices.builder(ResumeAssistant.class)
+                .chatModel(chatModel)
+                .chatMemoryProvider(id -> MessageWindowChatMemory.withMaxMessages(10))
+                .build();
+    }
 }

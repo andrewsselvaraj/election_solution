@@ -32,6 +32,10 @@ Then open http://localhost:8080/assistant. Without the key the page loads but th
 OpenAI `text-embedding-3-small` at startup, and the closest chunks are added to each question.
 Add more `.txt` files to that folder to teach it more.
 
+**Resume assistant:** open http://localhost:8080/resume, upload your resume (.pdf, .txt or .md)
+and ask questions about it. The resume text is kept only in your browser session (never saved
+to disk or git) and is sent to OpenAI with each question.
+
 Architecture overview slides: [`docs/LangChain_Election_Architecture.pptx`](docs/LangChain_Election_Architecture.pptx)
 (components, request flow, who does what, code map).
 Model and token limit are set in `application.properties` (`langchain.openai.*`, default model `gpt-5-mini`).
@@ -72,10 +76,13 @@ src/main/java/com/election/solution
 ├── ai/
 │   ├── ElectionAssistant.java         # LangChain4j AI service interface
 │   ├── ElectionTools.java             # @Tool methods the model can call
+│   ├── ElectionRulesRag.java          # RAG over src/main/resources/rag
+│   ├── ResumeAssistant.java           # resume Q&A AI service
 │   └── LangChainConfig.java           # OpenAI chat model + AiServices wiring
 └── controller/
     ├── HomeController.java            # serves "/"
-    └── AssistantController.java       # serves "/assistant"
+    ├── AssistantController.java       # serves "/assistant"
+    └── ResumeController.java          # serves "/resume"
 src/main/resources
 ├── application.properties             # shared settings
 ├── application-{dev,prod,test}.properties
