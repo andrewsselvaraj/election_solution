@@ -6,7 +6,7 @@ import org.springframework.test.context.ActiveProfiles;
 
 @ActiveProfiles("test")
 // Force the key empty even if a local config/application.properties holds a real one
-@SpringBootTest(properties = "langchain.openai.api-key=")
+@SpringBootTest(properties = {"langchain.openai.api-key=", "langchain.gemini.api-key="})
 class ElectionSolutionApplicationTests {
 
     @Test
