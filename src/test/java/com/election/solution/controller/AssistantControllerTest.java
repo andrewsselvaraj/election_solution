@@ -5,11 +5,15 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
+import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.context.ActiveProfiles;
 
 import static org.hamcrest.Matchers.containsString;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -37,11 +41,23 @@ class AssistantControllerTest {
 
     @Test
     void questionIsAnsweredByAssistant() throws Exception {
-        given(assistant.chat("When is polling day?")).willReturn("Polling day is 2026-11-03.");
+        given(assistant.chat(anyString(), eq("When is polling day?"))).willReturn("Polling day is 2026-11-03.");
 
         mockMvc.perform(post("/assistant").param("question", "When is polling day?"))
                 .andExpect(status().isOk())
                 .andExpect(model().attribute("answer", "Polling day is 2026-11-03."))
                 .andExpect(content().string(containsString("Polling day is 2026-11-03.")));
+    }
+
+    @Test
+    void eachBrowserSessionUsesItsOwnConversationId() throws Exception {
+        MockHttpSession alice = new MockHttpSession(null, "alice");
+        MockHttpSession bob = new MockHttpSession(null, "bob");
+
+        mockMvc.perform(post("/assistant").session(alice).param("question", "Hi")).andExpect(status().isOk());
+        mockMvc.perform(post("/assistant").session(bob).param("question", "Hi")).andExpect(status().isOk());
+
+        verify(assistant).chat("alice", "Hi");
+        verify(assistant).chat("bob", "Hi");
     }
 }

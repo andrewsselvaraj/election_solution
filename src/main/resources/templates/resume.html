@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head(${title})}"></head>
+<body>
+<header th:replace="~{layout :: header}"></header>
+
+<main class="container">
+    <h1 th:text="${title}">Resume Assistant</h1>
+
+    <p th:unless="${enabled}" class="notice">
+        The assistant is disabled. Set the <code>OPENAI_API_KEY</code> environment variable and restart.
+    </p>
+    <p th:if="${error}" class="notice" th:text="${error}">Error</p>
+    <p th:if="${message}" th:text="${message}">Message</p>
+
+    <form th:action="@{/resume/upload}" method="post" enctype="multipart/form-data" class="ask-form">
+        <label for="file">1. Upload your resume (.pdf, .txt or .md)</label>
+        <input id="file" type="file" name="file" accept=".pdf,.txt,.md" required>
+        <button type="submit">Upload</button>
+        <small th:if="${resumeName}">Loaded: <strong th:text="${resumeName}">resume.pdf</strong>
+            (kept only in this browser session, not saved)</small>
+    </form>
+
+    <form th:if="${enabled and resumeName != null}" th:action="@{/resume/ask}" method="post" class="ask-form">
+        <label for="question">2. Ask about the resume</label>
+        <textarea id="question" name="question" rows="3" required
+                  th:text="${question}">What are my key skills?</textarea>
+        <button type="submit">Ask</button>
+    </form>
+
+    <section th:if="${answer}" class="answer">
+        <h2>Answer</h2>
+        <p th:text="${answer}">Answer text</p>
+    </section>
+</main>
+
+<footer th:replace="~{layout :: footer}"></footer>
+</body>
+</html>

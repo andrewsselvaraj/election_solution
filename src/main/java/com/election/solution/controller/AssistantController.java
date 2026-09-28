@@ -1,6 +1,7 @@
 package com.election.solution.controller;
 
 import com.election.solution.ai.ElectionAssistant;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,13 +26,13 @@ public class AssistantController {
     }
 
     @PostMapping("/assistant")
-    public String ask(@RequestParam String question, Model model) {
+    public String ask(@RequestParam String question, HttpSession session, Model model) {
         ElectionAssistant ai = assistant.getIfAvailable();
         model.addAttribute("title", "Election Assistant");
         model.addAttribute("enabled", ai != null);
         model.addAttribute("question", question);
         if (ai != null && !question.isBlank()) {
-            model.addAttribute("answer", ai.chat(question));
+            model.addAttribute("answer", ai.chat(session.getId(), question));
         }
         return "assistant";
     }
