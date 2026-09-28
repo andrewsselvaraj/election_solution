@@ -36,6 +36,10 @@ Add more `.txt` files to that folder to teach it more.
 and ask questions about it. The resume text is kept only in your browser session (never saved
 to disk or git) and is sent to OpenAI with each question.
 
+**Gemini chat:** open http://localhost:8080/gemini to chat with Google Gemini through LangChain4j
+(`GeminiController` → `GeminiChatService` → `GeminiAssistant`). Set `GEMINI_API_KEY` (from Google AI
+Studio); the model is `langchain.gemini.model-name` (default `gemini-flash-latest`).
+
 Architecture overview slides: [`docs/LangChain_Election_Architecture.pptx`](docs/LangChain_Election_Architecture.pptx)
 (components, request flow, who does what, code map).
 Model and token limit are set in `application.properties` (`langchain.openai.*`, default model `gpt-5-mini`).
