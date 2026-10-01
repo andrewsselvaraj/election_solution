@@ -1,0 +1,16 @@
+# Local PostgreSQL with the pgvector extension.
+# Start with: docker compose up -d   then run the app with SPRING_PROFILES_ACTIVE=pgvector
+services:
+  pgvector:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_DB: vectordb
+      POSTGRES_USER: vector
+      POSTGRES_PASSWORD: vector
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgvector-data:/var/lib/postgresql/data
+
+volumes:
+  pgvector-data:

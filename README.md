@@ -44,6 +44,11 @@ Architecture overview slides: [`docs/LangChain_Election_Architecture.pptx`](docs
 (components, request flow, who does what, code map).
 Model and token limit are set in `application.properties` (`langchain.openai.*`, default model `gpt-5-mini`).
 
+## Vector DB demo
+
+[`vector-db-demo/`](vector-db-demo) is a separate Spring Boot project for testing a vector database
+(local embeddings + in-memory store or PostgreSQL/pgvector). See its [README](vector-db-demo/README.md).
+
 ## Profiles
 
 | Profile | File | Used for |

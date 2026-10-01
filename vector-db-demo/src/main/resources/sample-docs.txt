@@ -1,0 +1,13 @@
+# category|text  (one document per line, lines starting with # are ignored)
+animals|The cheetah is the fastest land animal, reaching speeds of up to 110 km/h.
+animals|Elephants are the largest land mammals and have excellent long-term memory.
+animals|Penguins are flightless birds that live almost exclusively in the Southern Hemisphere.
+food|Sourdough bread is made by fermenting dough with wild yeast and lactic acid bacteria.
+food|Sushi is a Japanese dish of vinegared rice served with raw fish and vegetables.
+food|Dark chocolate contains cocoa solids, cocoa butter and very little sugar.
+tech|PostgreSQL is an open-source relational database; pgvector adds vector similarity search to it.
+tech|Spring Boot makes it easy to create stand-alone, production-grade Spring applications.
+tech|An embedding is a list of numbers that captures the meaning of a piece of text.
+space|Mars is called the Red Planet because of iron oxide on its surface.
+space|The James Webb Space Telescope observes the universe in infrared light.
+sport|A marathon is a long-distance running race of 42.195 kilometres.
